@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_PATH, USER_TOKEN } from "../../tools/constants";
-import { UPDATE_AUTH } from "../types/auth"
+import { UPDATE_AUTH } from "../types/auth";
 
 
 export const updateAuth = state => {
@@ -19,6 +19,7 @@ export const test = () => async (dispatch) => {
 }
 
 export const REGISTER = (phone, username, password) => async dispatch => {
+
     try {
         await axios.post(API_PATH + '/accounts/register/', { phone, username, password })
             .then((res) => {
@@ -40,6 +41,7 @@ export const REGISTERVERIFY = (phone, code, password) => async dispatch => {
             .then((res) => {
                 console.log(res);
                 dispatch(updateAuth({ isVerify: false, isLogin: true }))
+                // nav('/Verify', { replace: true })
             })
             .catch((err) => {
                 console.log(err);
@@ -48,6 +50,8 @@ export const REGISTERVERIFY = (phone, code, password) => async dispatch => {
         console.log(err);
     }
 }
+
+
 
 export const LOGIN = (phone, password, nav) => async dispatch => {
     try {

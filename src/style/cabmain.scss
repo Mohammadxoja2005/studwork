@@ -5,7 +5,22 @@ $text:#778ca3;
 
 
 
-.CabinetLayout {
+.CabinetLayout { 
+
+    // .profile_input {
+    //     // background-color: green;
+    //     position: absolute;
+    //     z-index: 1;
+    //     right: 350px;
+    //     top: 20px;
+    // } 
+
+    .profile_img {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .container {
         max-width: 1600px;
     }
@@ -167,6 +182,7 @@ $text:#778ca3;
             .exp_info_head_right_text {
                 display: flex;
                 align-items: center;
+                position: relative;
 
                 .exp_info_head_right_img {
                     width: 40px;

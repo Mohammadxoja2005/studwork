@@ -4,13 +4,14 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from "reactstrap";
 import classnames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import { getWorkTypes, getSubjectTypes } from "../../redux/slices/projectSlice";
-import { createMarket, getMarkets} from "../../redux/slices/marketSlice";
+import { createMarket, getMarkets } from "../../redux/slices/marketSlice";
 
 const ShopMain = () => {
   const dispatch = useDispatch();
   const workTypes = useSelector((state) => state.project.work_types);
   const subjectTypes = useSelector((state) => state.project.subject_types);
-
+  const markets = useSelector((state) => state.market.market);
+  // console.log(markets);
   const userIndex = localStorage.getItem("userIndex");
 
   const [activeTab, setActiveTab] = useState("1");
@@ -24,7 +25,6 @@ const ShopMain = () => {
   const [shopContent, setShopContent] = useState("");
   const [shopSource, setShopSource] = useState("");
   const [shopPremiumAccomodation, setShopPremiumAccomodation] = useState(false);
-
   const [doneShopFiles, setDoneShopFiles] = useState([]);
   const [demoShopFiles, setDemoShopFiles] = useState([]);
 
@@ -34,13 +34,12 @@ const ShopMain = () => {
 
   useEffect(() => {
     dispatch(getWorkTypes());
-    dispatch(getSubjectTypes()); 
+    dispatch(getSubjectTypes());
     dispatch(getMarkets());
   }, []);
 
   const createShop = () => {
     const formData = new FormData();
-
     formData.append("user", userIndex);
     formData.append("name", shopName);
     formData.append("work_type", shopWorkType);
@@ -108,6 +107,7 @@ const ShopMain = () => {
                 </NavLink>
               </NavItem>
             </Nav>
+
             <TabContent activeTab={activeTab}>
               <TabPane tabId="1" className="">
                 <div className="row">
@@ -158,14 +158,137 @@ const ShopMain = () => {
                     </div>
                   </div>
                 </div>
-                <div className="shopmain_tab_h">
+
+                {/* <div className="shop_main_card"></div>  */}
+
+                {markets &&
+                  markets.map((item) => {
+                    return (
+                      <div className="market_card">
+                        <div className="market_premium">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            data-icon="star"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 576 512"
+                            class="sf-icon feature-badge__icon svg-inline--fa fa-star"
+                            data-v-4d7d0664=""
+                            data-v-63a3aa2d=""
+                          >
+                            <path
+                              fill="yellow"
+                              d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                              class=""
+                            ></path>
+                          </svg>
+                          <div className="market_premium_text">Премиум</div>
+                        </div>
+                        <div className="market_content">
+                          <p className="market_content_text">{item.content}</p>
+                          <div className="market_price">400</div>
+                        </div>
+
+                        <div className="market_detail_show">
+                          <div className="market_username">
+                            <div className="market_username_img"></div>
+                            {item.user}
+                          </div>
+                          <div className="market_type">
+                            <svg
+                              data-v-44480aa8=""
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="far"
+                              data-icon="calendar-lines"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                              class="sf-icon svg-inline--fa fa-calendar-lines"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M96 280C96 266.7 106.7 256 120 256H328C341.3 256 352 266.7 352 280C352 293.3 341.3 304 328 304H120C106.7 304 96 293.3 96 280zM232 352C245.3 352 256 362.7 256 376C256 389.3 245.3 400 232 400H120C106.7 400 96 389.3 96 376C96 362.7 106.7 352 120 352H232zM152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z"
+                                class=""
+                              ></path>
+                            </svg>
+                            Курсовая
+                          </div>
+                          <div className="market_type">
+                            <svg
+                              data-v-44480aa8=""
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="far"
+                              data-icon="calendar-lines"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                              class="sf-icon svg-inline--fa fa-calendar-lines"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M96 280C96 266.7 106.7 256 120 256H328C341.3 256 352 266.7 352 280C352 293.3 341.3 304 328 304H120C106.7 304 96 293.3 96 280zM232 352C245.3 352 256 362.7 256 376C256 389.3 245.3 400 232 400H120C106.7 400 96 389.3 96 376C96 362.7 106.7 352 120 352H232zM152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z"
+                                class=""
+                              ></path>
+                            </svg>
+                            11 Апр в 21:49
+                          </div>
+                          <div className="market_type">
+                            <svg
+                              data-v-2b2913da=""
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="far"
+                              data-icon="eye"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 576 512"
+                              class="sf-icon info-counter__icon svg-inline--fa fa-eye"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M160 256C160 185.3 217.3 128 288 128C358.7 128 416 185.3 416 256C416 326.7 358.7 384 288 384C217.3 384 160 326.7 160 256zM288 336C332.2 336 368 300.2 368 256C368 211.8 332.2 176 288 176C287.3 176 286.7 176 285.1 176C287.3 181.1 288 186.5 288 192C288 227.3 259.3 256 224 256C218.5 256 213.1 255.3 208 253.1C208 254.7 208 255.3 208 255.1C208 300.2 243.8 336 288 336L288 336zM95.42 112.6C142.5 68.84 207.2 32 288 32C368.8 32 433.5 68.84 480.6 112.6C527.4 156 558.7 207.1 573.5 243.7C576.8 251.6 576.8 260.4 573.5 268.3C558.7 304 527.4 355.1 480.6 399.4C433.5 443.2 368.8 480 288 480C207.2 480 142.5 443.2 95.42 399.4C48.62 355.1 17.34 304 2.461 268.3C-.8205 260.4-.8205 251.6 2.461 243.7C17.34 207.1 48.62 156 95.42 112.6V112.6zM288 80C222.8 80 169.2 109.6 128.1 147.7C89.6 183.5 63.02 225.1 49.44 256C63.02 286 89.6 328.5 128.1 364.3C169.2 402.4 222.8 432 288 432C353.2 432 406.8 402.4 447.9 364.3C486.4 328.5 512.1 286 526.6 256C512.1 225.1 486.4 183.5 447.9 147.7C406.8 109.6 353.2 80 288 80V80z"
+                                class="st-current"
+                              ></path>
+                            </svg>
+                            40
+                          </div>
+                          <div className="market_type">
+                            <svg
+                              data-v-2b2913da=""
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="far"
+                              data-icon="credit-card"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 576 512"
+                              class="sf-icon info-counter__icon svg-inline--fa fa-credit-card st-current"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M168 336C181.3 336 192 346.7 192 360C192 373.3 181.3 384 168 384H120C106.7 384 96 373.3 96 360C96 346.7 106.7 336 120 336H168zM360 336C373.3 336 384 346.7 384 360C384 373.3 373.3 384 360 384H248C234.7 384 224 373.3 224 360C224 346.7 234.7 336 248 336H360zM512 32C547.3 32 576 60.65 576 96V416C576 451.3 547.3 480 512 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H512zM512 80H64C55.16 80 48 87.16 48 96V128H528V96C528 87.16 520.8 80 512 80zM528 224H48V416C48 424.8 55.16 432 64 432H512C520.8 432 528 424.8 528 416V224z"
+                                class=""
+                              ></path>
+                            </svg>
+                            0 покупок
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                {/* <div className="shopmain_tab_h">
                   Найдено <span>0</span> работ
                 </div>
                 <div className="shopmain_tab_p">
                   Не найдено ни одной работы.
                   <br />
                   Попробуйте изменить условия поиска.
-                </div>
+                </div> */}
               </TabPane>
             </TabContent>
             <TabContent activeTab={activeTab}>

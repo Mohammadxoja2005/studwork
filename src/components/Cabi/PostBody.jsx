@@ -180,7 +180,7 @@ const PostBody = () => {
                   onChange={(e) => setProjectPrice(e.target.value)}
                 />
                 <div className="post_body_sal_h">
-                  Сумма, которую вы готовы заплатить эксперту 
+                  Сумма, которую вы готовы заплатить эксперту
                 </div>
               </div>
               <div className="col-12 d-flex align-items-center mt-4">

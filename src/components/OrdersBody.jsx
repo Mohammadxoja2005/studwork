@@ -1,43 +1,27 @@
-import axios from "axios";
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { API_PATH } from "../tools/constants";
 import CabinetLayout from "./Cabi/CabinetLayout";
 import OrderBox from "./OrderBox";
+import {
+  getSubjectTypes,
+  getWorkTypes,
+  getProjects,
+} from "../redux/slices/projectSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const OrdersBody = () => {
-  const [orders, setOrders] = useState([]);
-  const [worktype, setWorkType] = useState([]);
+  const dispatch = useDispatch();
+
+  const workTypes = useSelector((state) => state.project.work_types);
+  const subjectTypes = useSelector((state) => state.project.subject_types);
+  const orders = useSelector((state) => state.project.project);
 
   useEffect(() => {
-    const getOrders = () => {
-      axios
-        .get(API_PATH + "projects/work-list/")
-        .then((res) => {
-          setOrders(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getOrders();
-  }, []);
-
-
-  useEffect(() => {
-    const getWorkType = () => {
-      axios
-        .get(API_PATH + "projects/list-worktype/")
-        .then((res) => {
-          setWorkType(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getWorkType();
+    dispatch(getSubjectTypes());
+    dispatch(getWorkTypes());
+    dispatch(getProjects());
   }, []);
 
   return (
@@ -60,18 +44,25 @@ const OrdersBody = () => {
             <div className="orders_body_inp_box">
               <select className="orders_body_inp_box_sel me-4">
                 <option value="">Все типы работ</option>
-                { worktype && worktype.map((item,index) => {
-                  return(
-                    <option key={index} value="">{item.name}</option>
-                  )
-                })}
+                {workTypes &&
+                  workTypes.map((item) => {
+                    return (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    );
+                  })}
               </select>
               <select className="orders_body_inp_box_sel me-4">
                 <option value="">Все предметы</option>
-                <option value="">Алгебра</option>
-                <option value="">Аналитическая геометрия</option>
-                <option value="">Вычислительная математика</option>
-                <option value="">Геометрия</option>
+                {subjectTypes &&
+                  subjectTypes.map((item) => {
+                    return (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    );
+                  })}
               </select>
               <div className="orders_body_inp_btn">
                 <a href="">

@@ -21,6 +21,14 @@ export const getSubjectTypes = createAsyncThunk('/projects/list-subjecttype/', (
 
 });
 
+export const getProjects = createAsyncThunk('/projects/work-list/', () => {
+    return axios.get(`${API_PATH}/projects/work-list/`)
+        .then((response) => {
+            return response.data;
+        })
+
+});
+
 export const projectSlice = createSlice({
     name: "project",
     initialState: {
@@ -61,7 +69,19 @@ export const projectSlice = createSlice({
         },
         [getSubjectTypes.rejected]: (state, action) => {
             state.loading = false;
-        }
+        },
+
+
+        [getProjects.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [getProjects.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.project = action.payload;
+        },
+        [getProjects.rejected]: (state, action) => {
+            state.loading = false;
+        },
     },
 })
 

@@ -29,6 +29,7 @@ import QuestionsIn from "./pages/QuestionsIn";
 import Registration from "./pages/Registration";
 import Servic from "./pages/Servic";
 import Shop from "./pages/Shop";
+import ShowOrder from "./pages/ShowOrder";
 
 const App = () => {
   return (
@@ -47,7 +48,7 @@ const App = () => {
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/OrderIn" element={<OrderIn />} />
+          <Route path="/OrderIn/:id" element={<OrderIn />} />
           <Route path="/ExpertInfo" element={<ExpertInfo />} />
           <Route path="/Questions" element={<Questions />} />
           <Route path="/QuestionsIn" element={<QuestionsIn />} />
@@ -66,7 +67,9 @@ const App = () => {
           <Route path="/Claims" element={<Claims />} />
           <Route path="/Post" element={<Post />} />
           <Route path="/Stats" element={<Stats />} />
-          <Route path="/Spec" element={<Spec />} />
+          <Route path="/Spec" element={<Spec />} /> 
+          <Route path="/ShowOrder/:id" element={<ShowOrder />} /> 
+
         </Routes>
         <ScrollToTop />
       </HashRouter>

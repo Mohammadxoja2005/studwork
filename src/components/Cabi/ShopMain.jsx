@@ -5,6 +5,7 @@ import classnames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import { getWorkTypes, getSubjectTypes } from "../../redux/slices/projectSlice";
 import { createMarket, getMarkets } from "../../redux/slices/marketSlice";
+import { Link } from "react-router-dom";
 
 const ShopMain = () => {
   const dispatch = useDispatch();
@@ -187,7 +188,12 @@ const ShopMain = () => {
                           <div className="market_premium_text">Премиум</div>
                         </div>
                         <div className="market_content">
-                          <p className="market_content_text">{item.content}</p>
+                          <Link
+                            to={`/OrderIn/${item.id}`}
+                            className="market_content_text"
+                          >
+                            {item.content}
+                          </Link>
                           <div className="market_price">400</div>
                         </div>
 

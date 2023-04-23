@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { API_PATH } from "../tools/constants";
 import CabinetLayout from "./Cabi/CabinetLayout";
 import OrderBox from "./OrderBox";
@@ -72,12 +72,15 @@ const OrdersBody = () => {
             </div>
 
             {orders &&
-              orders.map((item, index) => {
+              orders.map((item) => {
                 return (
-                  <div key={index} className="orders_body_main">
-                    <Link to="/OrderIn" className="orders_body_main_name">
+                  <div key={item.id} className="orders_body_main">
+                    <a
+                      href={`/#/ShowOrder/${item.id}`}
+                      className="orders_body_main_name"
+                    >
                       {item.name}
-                    </Link>
+                    </a>
                     <p>{item.work_type.name}</p>
                     <p>{item.specialist.name}</p>
                     <div className="orders_body_main_box">

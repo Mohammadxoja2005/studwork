@@ -29,12 +29,23 @@ export const getProjects = createAsyncThunk('/projects/work-list/', () => {
 
 });
 
+export const getProject = createAsyncThunk('/projects/work-detail/', (id) => {
+
+    return axios.get(`${API_PATH}/projects/work-detail/${id}`)
+        .then((response) => {
+            return response.data;
+        })
+
+});
+
+
 export const projectSlice = createSlice({
     name: "project",
     initialState: {
         work_types: [],
         subject_types: [],
         project: [],
+        singleProject: [],
         loading: false
     },
     reducers: {
@@ -42,6 +53,14 @@ export const projectSlice = createSlice({
             const data = action.payload;
 
             axios.post(`${API_PATH}projects/work-create/`, data)
+                .then((response) => {
+                    console.log(response);
+                })
+        },
+
+        projectResponse(state, action) {
+            const data = action.payload;
+            axios.post(`${API_PATH}projects/otclick/`, data, { headers: { 'Authorization': `Token ${accessToken}` } })
                 .then((response) => {
                     console.log(response);
                 })
@@ -82,8 +101,20 @@ export const projectSlice = createSlice({
         [getProjects.rejected]: (state, action) => {
             state.loading = false;
         },
+
+
+        [getProject.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [getProject.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.singleProject = action.payload;
+        },
+        [getProject.rejected]: (state, action) => {
+            state.loading = false;
+        },
     },
 })
 
-export const { createProject } = projectSlice.actions;
+export const { createProject, projectResponse } = projectSlice.actions;
 export default projectSlice.reducer;

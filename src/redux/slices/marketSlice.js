@@ -19,10 +19,19 @@ export const getMarkets = createAsyncThunk('market/project-list', () => {
         })
 })
 
+export const getMarket = createAsyncThunk('market/project-detail/:id', (id) => {
+    
+    return axios.get(`${API_PATH}/market/project-detail/${id}`) 
+        .then((response) => {
+            return response.data;
+        })
+})
+
 const marketSlice = createSlice({
     name: "market",
     initialState: {
         market: [],
+        singleMarket: [],
         loading: false
     },
     reducers: {
@@ -68,6 +77,17 @@ const marketSlice = createSlice({
             state.market = action.payload;
         },
         [getMarkets.rejected]: (state, action) => {
+            state.loading = false;
+        }, 
+
+        [getMarket.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [getMarket.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.singleMarket = action.payload;
+        },
+        [getMarket.rejected]: (state, action) => {
             state.loading = false;
         }
     }

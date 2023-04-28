@@ -13,25 +13,34 @@ const Reviews = () => {
             <div className="Reviews">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-lg-12">
                             <div className="reviews_name">Отзывы о сайте </div>
                         </div>
-                        <div className="col-12 d-flex justify-content-center align-items-center">
+                        <div className="col-lg-12 d-flex justify-content-center align-items-center">
                             <div className="reviews_name_2">2 677 571 отзыв </div>
                             <div className="reviews_name_2">4.97 средняя оценка </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-lg-12">
                             <Swiper
                                 slidesPerView={2}
                                 spaceBetween={20}
-                                slidesPerGroup={1}
+                                // slidesPerGroup={1}
                                 loop={true}
                                 loopFillGroupWithBlank={true}
                                 pagination={{
                                     clickable: true,
-                                }}
+                                }}  
+                                breakpoints={{ 
+                                    992: {
+                                        slidesPerView: 2
+                                    }, 
+                                    0: {
+                                        slidesPerView: 1
+                                    }
+                                 }}
+                                
                                 navigation={true}
                                 modules={[Pagination, Navigation]}
                                 className="mySwiper"
@@ -70,7 +79,7 @@ const Reviews = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-lg-12">
                             <div className="reviews_btn">
                                 <a href=""><button>Все отзывы </button></a>
                             </div>

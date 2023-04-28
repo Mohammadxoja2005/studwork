@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="Footer">
                 <div className="container">
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-lg-4">
                             <div className="foot_h">Служба поддержки </div>
                             <div className='d-flex flex-column'>
                                 <a href="" className="foot_h">+998 (90) 000 00 00</a>
@@ -25,7 +25,7 @@ const Footer = () => {
                             <div className="foot_p">ВУЗы </div>
                             <div className="foot_p">Карта сайта </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-lg-4">
                             <div className="foot_h">Услуги  </div>
                             <div className="foot_p">Дипломная работа  </div>
                             <div className="foot_p">Курсовая работа   </div>
@@ -40,7 +40,7 @@ const Footer = () => {
                             <div className="foot_p">Бизнес-план </div>
                             <div className="foot_p">Все услуги </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-lg-4">
                             {/* <div className="foot_h">Вакансии </div>
                             <div className="foot_p">Стать автором  </div>
                             <div className="foot_p">Все вакансии  </div>

@@ -7,7 +7,7 @@ const Header = () => {
       <div className="Header">
         <div className="container">
           <div className="row justify-content-between">
-            <div className="col-4">
+            <div className="col-4 head_info">
               <div className="head_name">Биржа помощи студентам</div>
               <div className="head_p">С нами работают лучшие авторы учебных работ</div>
               <div className="head_box">
@@ -15,7 +15,7 @@ const Header = () => {
                 <Link to='/OrderAuthor' className="head_author"><button> Я автор</button></Link>
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-6 head_img_container">
               <div className="head_img"><img src="/img/head_man.png" alt="" className="head_foto" /></div>
             </div>
           </div>

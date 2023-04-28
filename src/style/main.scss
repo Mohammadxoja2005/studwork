@@ -53,6 +53,52 @@ $text: #778ca3;
   font-size: 15px;
   color: #2d98da;
   cursor: pointer;
+} 
+
+.profile_input {
+  margin-bottom: 20px; 
+}   
+
+.file-input {
+   margin-bottom: 20px;
+}
+
+.file-input__input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-input__label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 12px;
+  background-color: #4245a8;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.file-input__label svg {
+  height: 16px;
+  margin-right: 4px;
+}
+
+
+.profile_change_btn {
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  height: 50px;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  padding: 2px 10px;
 }
 
 .showorder_profile_features {
@@ -249,26 +295,51 @@ body {
   background-color: #e1e1e1c4;
 }
 
-.Navbar {
-  z-index: 9999;
-  position: fixed;
-  left: 0;
-  right: 0;
+.Navbar { 
+  position: sticky;
   top: 0;
+  z-index: 9999;
   display: flex;
   align-items: center;
   background-color: initial;
-  height: 80px;
+  padding: 20px 0;
+  // height: 80px;
   transition: 0.4s;
 
-  height: 100px;
+  // height: 100px;
   // background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
   background-color: #302b63;
   box-shadow: 6px 6px 6px #1500ff7a;
+  
+  .navbar_container {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+  } 
 
-  .nav_a_img {
-    margin-left: 10px;
+  .navbar_raw {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
   }
+ 
+  .navbar_raw_menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  } 
+
+  .navbar_raw_auth {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // .nav_a_img {
+  //   margin-left: 10px;
+  // }
 
   .nav_img {
     width: 35px;
@@ -298,7 +369,7 @@ body {
     font-family: "Open Sans", sans-serif;
     color: white;
     font-weight: 600;
-    font-size: 21px;
+    font-size: 18px;
 
     &.active {
       color: white;
@@ -316,11 +387,32 @@ body {
   }
 }
 
+.navbar_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1072px) {
+  .navbar_container {
+    display: none;
+  } 
+  .navbar_mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+} 
+
+
+
 .Header {
-  padding-top: 120px;
+  // padding-top: 120px;
   width: 100%;
   // background-image: linear-gradient(144deg, #7450bb 10%, #000000 100%);
   background-image: linear-gradient(144deg, #7000ff 10%, #000000 100%);
+  padding: 80px 0; 
 
   .head_img {
     .head_foto {
@@ -330,7 +422,6 @@ body {
   }
 
   .head_name {
-    margin-top: 80px;
     font-size: 55px;
     line-height: 62px;
     font-weight: 600;
@@ -354,7 +445,6 @@ body {
     .head_client {
       button {
         text-decoration: none;
-        position: absolute;
         border: none;
         font-size: 20px;
         font-family: inherit;
@@ -411,7 +501,6 @@ body {
     .head_author {
       button {
         text-decoration: none;
-        position: absolute;
         border: none;
         font-size: 20px;
         font-family: inherit;
@@ -465,7 +554,23 @@ body {
       }
     }
   }
-}
+}  
+
+@media screen and (max-width: 992px) {
+  .head_img_container {
+    display: none;
+  } 
+  .head_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
+
+  .head_box {
+    gap: 20px;
+  }
+} 
 
 .Trusted {
   padding: 100px 0;
@@ -502,7 +607,7 @@ body {
 }
 
 .Services {
-  padding: 100px 0;
+  // padding: 100px 0;
 
   .swiper-pagination-bullets {
     display: none;
@@ -1259,14 +1364,16 @@ body {
   }
 
   .trust_home_box_img {
-    position: relative;
-
-    .trust_home_img_2 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
+    // position: relative;
+    // margin: auto;
+    display: flex;
+    justify-content: center;
+    // .trust_home_img_2 {
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   right: 0;
+    // }
   }
 
   .trust_home_h {
@@ -5682,4 +5789,19 @@ body {
 
 .navbarLine {
   margin-top: 100px;
+} 
+
+// @media (max-width: 1032px) {
+//   .nav_a {
+//     font-size: 5px;
+//   }
+// }
+
+@media screen and (max-width:500px) {
+  .last_ord_sale{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
 }

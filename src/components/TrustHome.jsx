@@ -6,18 +6,18 @@ const TrustHome = () => {
             <div className="TrustHome">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-lg-12">
                             <div className="trust_home_name">Доверьтесь экспертам</div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-6">
+                    <div className="row ">
+                        <div className="col-lg-6">
                             <div className="trust_home_box_img">
                                 <img src="/img/trust_h_1.png" alt="" className="trust_home_img_1" />
-                                <img src="/img/trust_h_2.png" alt="" className="trust_home_img_2" />
+                                {/* <img src="/img/trust_h_2.png" alt="" className="trust_home_img_2" /> */}
                             </div>
                         </div>
-                        <div className="col-6 text-center">
+                        <div className="col-lg-6 text-center">
                             <div className="trust_home_h">Экспертов онлайн </div>
                             <div className="trust_home_number">
                                 <div className="trust_home_num">3</div>

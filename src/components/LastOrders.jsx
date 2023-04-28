@@ -6,13 +6,13 @@ const LastOrders = () => {
             <div className="LastOrders">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-lg-12">
                             <div className="last_ord_name">Последние заказы </div>
                         </div>
                     </div>
                     <div className="row justify-content-between">
-                        <div className="col-6 d-flex flex-column justify-content-between">
-                            <div className="last_ord_exer">
+                        <div className="col-lg-6 mb-5 d-flex flex-column justify-content-between">
+                            <div className="last_ord_exer mb-5">
                                 <img src="/img/last_ord_ecer_1.png" alt="" className="last_ord_exer_img" />
                                 <div className="last_ord_exer_text">
                                     <div className="last_ord_text_name">Контрольная работа по химии</div>
@@ -23,7 +23,7 @@ const LastOrders = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="last_ord_exer">
+                            <div className="last_ord_exer mb-5">
                                 <img src="/img/last_ord_ecer_1.png" alt="" className="last_ord_exer_img" />
                                 <div className="last_ord_exer_text">
                                     <div className="last_ord_text_name">Контрольная работа по химии</div>
@@ -46,7 +46,7 @@ const LastOrders = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-5">
+                        <div className="col-lg-5">
 
                             <div className="last_ord_box">
                                 <div className="last_ord_text_h">Нужна аналогичная работа? </div>

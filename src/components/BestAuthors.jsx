@@ -20,14 +20,27 @@ const BestAuthors = () => {
                     <div className="row">
                         <div className="col-12">
                             <Swiper
-                                slidesPerView={3}
+                                slidesPerView={2}
                                 spaceBetween={30}
                                 slidesPerGroup={1}
                                 loop={true}
                                 loopFillGroupWithBlank={true}
                                 pagination={{
                                     clickable: true,
-                                }}
+                                }} 
+                                breakpoints={{ 
+                                      992: {
+                                        slidesPerView: 3
+                                      } ,
+
+                                      768: {
+                                        slidesPerView: 2
+                                      },
+                                      
+                                      0: {
+                                        slidesPerView: 1
+                                      }
+                                 }}
                                 navigation={true}
                                 modules={[Pagination, Navigation]}
                                 className="mySwiper"

@@ -103,7 +103,7 @@ const OptBody = () => {
                       onChange={(e) => setNewPassword(e.target.value)}
                     />
                   </div>
-                  <button onClick={() => changeUserPassword()}>
+                  <button className="profile_change_btn" onClick={() => changeUserPassword()}>
                     change password
                   </button>
                 </div>

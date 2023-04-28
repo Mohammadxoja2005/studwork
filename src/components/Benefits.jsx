@@ -6,15 +6,15 @@ const Benefits = () => {
             <div className="Benefits">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-lg-12">
                             <div className="benef_name">Наши преимущества</div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-lg-6">
                             <img src="/img/benefites_head.jpg" alt="" className="w-100" />
                         </div>
-                        <div className="col-6">
+                        <div className="col-lg-6">
                             <div className="benef_h">Помогаем студентам</div>
                             <div className="benef_box">
                                 <div className="benef_box_img"><img src="/img/benef_clock.svg" alt="" className="benef_icon" /></div>

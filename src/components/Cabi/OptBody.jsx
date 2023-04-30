@@ -50,8 +50,8 @@ const OptBody = () => {
               <div className="ord_head_a_2">Настройки</div>
             </div>
 
-            <div className="row justify-content-between">
-              <div className="col-5">
+            <div className=" option_inputs">
+              <div className="">
                 <div className="opt_body_info">
                   <div className="opt_body_info_h">Личная информация</div>
                   <div className="opt_body_info_box">
@@ -81,8 +81,11 @@ const OptBody = () => {
                     />
                   </div>
                 </div>
+                <div className="opt_body_info_btn">
+                  <button onClick={() => changeData()}>Изменить данные</button>
+                </div>
               </div>
-              <div className="col-5">
+              <div className="">
                 <div className="opt_body_info">
                   <div className="opt_body_info_h">Пароль</div>
                   <div className="opt_body_info_box">
@@ -103,15 +106,14 @@ const OptBody = () => {
                       onChange={(e) => setNewPassword(e.target.value)}
                     />
                   </div>
-                  <button className="profile_change_btn" onClick={() => changeUserPassword()}>
+                  <button
+                    className="profile_change_btn"
+                    onClick={() => changeUserPassword()}
+                  >
                     change password
                   </button>
                 </div>
               </div>
-            </div>
-
-            <div className="opt_body_info_btn">
-              <button onClick={() => changeData()}>Изменить данные</button>
             </div>
           </div>
         </div>

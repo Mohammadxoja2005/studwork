@@ -82,71 +82,9 @@ const ExpertsRating = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="experts_rating_box">
-                                <div className="experts_rating_text_left">
-                                    <a href="" className="experts_rating_text_left_img">
-                                        <img className='' src="/img/a_author_1.jpg" alt="" />
-                                    </a>
-                                    <div className="experts_rating_text_name">
-                                        <a href="" className="experts_rating_text_name_a">studprof </a>
-                                        <div className="experts_rating_text_name_h">Рейтинг <span>78 377</span></div>
-                                        <div className="experts_rating_text_name_p"> 27-Уровень</div>
-                                    </div>
-                                </div>
-                                <div className="experts_rating_text_mid_2">
-                                    <div className="experts_rating_text_mid_2_h">Отзывы </div>
-                                    <div className="experts_rating_text_mid_2_box">
-                                        <img src="/img/like.png" alt="" className="experts_rating_text_mid_2_box_icon" />
-                                        <div className="experts_rating_text_mid_2_box_h">2 043 </div>
-                                        <img src="/img/dizlike.png" alt="" className="experts_rating_text_mid_2_box_icon" />
-                                        <div className="experts_rating_text_mid_2_box_h_2">2 043 </div>
-                                    </div>
-                                </div>
-                                <div className="experts_rating_text_right">
-                                    <div className="experts_rating_text_right_h">
-                                        Выполнены <br /> <span>15 863</span>  работы
-                                    </div>
-                                    <div className="experts_rating_text_right_box">
-                                        <div className="experts_rating_text_right_p"><span>13547</span>  в срок</div>
-                                        <div className="experts_rating_text_right_p_2"><span>8487</span>  раньше срока</div>
-                                        <div className="experts_rating_text_right_p_3"><span>255</span>  не в срок</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="experts_rating_box">
-                                <div className="experts_rating_text_left">
-                                    <a href="" className="experts_rating_text_left_img">
-                                        <img className='' src="/img/a_author_1.jpg" alt="" />
-                                    </a>
-                                    <div className="experts_rating_text_name">
-                                        <a href="" className="experts_rating_text_name_a">studprof </a>
-                                        <div className="experts_rating_text_name_h">Рейтинг <span>78 377</span></div>
-                                        <div className="experts_rating_text_name_p"> 27-Уровень</div>
-                                    </div>
-                                </div>
-                                <div className="experts_rating_text_mid_2">
-                                    <div className="experts_rating_text_mid_2_h">Отзывы </div>
-                                    <div className="experts_rating_text_mid_2_box">
-                                        <img src="/img/like.png" alt="" className="experts_rating_text_mid_2_box_icon" />
-                                        <div className="experts_rating_text_mid_2_box_h">2 043 </div>
-                                        <img src="/img/dizlike.png" alt="" className="experts_rating_text_mid_2_box_icon" />
-                                        <div className="experts_rating_text_mid_2_box_h_2">2 043 </div>
-                                    </div>
-                                </div>
-                                <div className="experts_rating_text_right">
-                                    <div className="experts_rating_text_right_h">
-                                        Выполнены <br /> <span>15 863</span>  работы
-                                    </div>
-                                    <div className="experts_rating_text_right_box">
-                                        <div className="experts_rating_text_right_p"><span>13547</span>  в срок</div>
-                                        <div className="experts_rating_text_right_p_2"><span>8487</span>  раньше срока</div>
-                                        <div className="experts_rating_text_right_p_3"><span>255</span>  не в срок</div>
-                                    </div>
-                                </div>
-                            </div>
                         </TabPane>
                     </TabContent>
-                    <TabContent activeTab={activeTab}>
+                    {/* <TabContent activeTab={activeTab}>
                         <TabPane tabId="2" className=''>
                             <div className="experts_rating_box">
                                 <div className="experts_rating_text_left">
@@ -339,7 +277,7 @@ const ExpertsRating = () => {
                                 </div>
                             </div>
                         </TabPane>
-                    </TabContent>
+                    </TabContent> */}
                 </div>
 
 

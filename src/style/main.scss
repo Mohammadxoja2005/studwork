@@ -12,6 +12,11 @@ $text: #778ca3;
   overflow-x: hidden;
 }
 
+.option_inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
 .see_process_works {
   display: flex;
   gap: 20px;
@@ -1942,7 +1947,7 @@ body {
           font-size: 22px;
           font-weight: 600;
         }
-      } 
+      }
 
       .ser_btn {
         background-color: green;
@@ -2430,9 +2435,7 @@ body {
       }
     }
   }
-} 
-
-
+}
 
 .OrderHead {
   padding-bottom: 100px;
@@ -5081,8 +5084,8 @@ body {
   }
 
   .exp_info_head {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
   }
 
   .exp_info_head_left {
@@ -5103,10 +5106,10 @@ body {
     justify-content: center;
 
     .exp_info_head_right_box {
-      margin-left: 100px;
+      // margin-left: 100px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      // align-items: center;
 
       .exp_info_head_right_text {
         display: flex;
@@ -5820,26 +5823,54 @@ body {
     flex-direction: column;
     align-items: flex-start;
   }
-} 
+}
 
 @media screen and (max-width: 768px) {
+  .SerWorks {
+    margin: 0 20px;
+  }
 
- .SerWorks {
-  margin: 0 20px;
- } 
+  .prof_body_comission {
+    display: none;
+  }
 
- .SerHead .ser_head_name {
-  font-size: 40px;
- }
+  .SerHead .ser_head_name {
+    font-size: 40px;
+  }
 
   .ser_work_box {
     display: flex;
     flex-direction: column;
     gap: 20px;
-  } 
+  }
 
   .ser_box_right {
     display: flex;
     flex-direction: column;
+  }
+
+  .option_inputs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .market_detail_show {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .experts_rating_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .shop_body_main_info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }

@@ -28,7 +28,7 @@ export const profileSlice = createSlice({
   reducers: {
     updateProfile: (state, action) => {
       const data = action.payload;
-
+      console.log(data);
       try {
         axios.patch(`${API_PATH}/accounts/rud-myaccount/${userIndex}/`, data)
           .then((response) => {

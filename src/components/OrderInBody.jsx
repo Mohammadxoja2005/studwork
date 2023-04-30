@@ -16,8 +16,6 @@ const OrderInBody = () => {
     dispatch(getMarket(id));
   }, []);
 
-  //   console.log(market);
-
   return (
     <>
       <div className="OrderInBody">

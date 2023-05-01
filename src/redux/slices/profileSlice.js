@@ -7,13 +7,13 @@ const userIndex = localStorage.getItem("userIndex");
 
 export const getProfile = createAsyncThunk('accounts/getprofile', () => {
 
-  return axios.get(`${API_PATH}accounts/rud-myaccount/${userIndex}`, {
+  return axios.get(`${API_PATH}accounts/rud-myaccount/${localStorage.getItem("userIndex")}`, {
     headers: {
       Authorization: `Token ${accessToken}`
     }
   })
     .then((response) => {
-      return response.data
+      return response.data;
     })
 })
 

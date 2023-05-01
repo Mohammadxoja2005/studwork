@@ -6,6 +6,7 @@ const accessToken = localStorage.getItem("accessToken");
 const userIndex = localStorage.getItem("userIndex");
 
 export const getProfile = createAsyncThunk('accounts/getprofile', () => {
+
   return axios.get(`${API_PATH}accounts/rud-myaccount/${userIndex}`, {
     headers: {
       Authorization: `Token ${accessToken}`
@@ -59,10 +60,10 @@ export const profileSlice = createSlice({
 
   extraReducers: {
     [getProfile.pending]: (state, action) => {
-      state.loading = true;
+      state.loading = false;
     },
     [getProfile.fulfilled]: (state, action) => {
-      state.loading = false;
+      state.loading = true;
       state.profile = action.payload;
     },
     [getProfile.rejected]: (state, action) => {

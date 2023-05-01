@@ -15,6 +15,11 @@ const Navbar = () => {
 
   window.addEventListener("scroll", changeNavbar);
 
+  const exitFromLogin = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userIndex");
+  };
+
   return (
     <>
       <div
@@ -128,7 +133,11 @@ const Navbar = () => {
               >
                 Авторизация
               </Link>
-              <a href="/" className="nav_a_img">
+              <a
+                href="/"
+                className="nav_a_img"
+                onClick={() => exitFromLogin()}
+              >
                 <img src="/img/prof_out.svg" alt="" className="nav_img" />
               </a>
             </div>
@@ -159,7 +168,7 @@ const Navbar = () => {
               <span class="navbar-toggler-icon"></span>
             </button>
           </nav>
-        </div> 
+        </div>
 
         {/* <div className="navbar_raw">
           <div className="navbar_raw_menu">
@@ -242,7 +251,6 @@ const Navbar = () => {
             </a>
           </div>
         </div>  */}
-
       </div>
 
       {/* <div className="navbarLine"></div> */}

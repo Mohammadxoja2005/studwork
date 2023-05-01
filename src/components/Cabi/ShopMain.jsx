@@ -41,6 +41,7 @@ const ShopMain = () => {
 
   const createShop = () => {
     const formData = new FormData();
+
     formData.append("user", userIndex);
     formData.append("name", shopName);
     formData.append("work_type", shopWorkType);

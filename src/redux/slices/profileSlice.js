@@ -6,8 +6,7 @@ const accessToken = localStorage.getItem("accessToken");
 const userIndex = localStorage.getItem("userIndex");
 
 export const getProfile = createAsyncThunk('accounts/getprofile', () => {
-
-  return axios.get(`${API_PATH}/accounts/rud-myaccount/${userIndex}`, {
+  return axios.get(`${API_PATH}accounts/rud-myaccount/${userIndex}`, {
     headers: {
       Authorization: `Token ${accessToken}`
     }
@@ -15,7 +14,6 @@ export const getProfile = createAsyncThunk('accounts/getprofile', () => {
     .then((response) => {
       return response.data
     })
-
 })
 
 export const profileSlice = createSlice({
@@ -28,9 +26,9 @@ export const profileSlice = createSlice({
   reducers: {
     updateProfile: (state, action) => {
       const data = action.payload;
-      console.log(data);
+
       try {
-        axios.patch(`${API_PATH}/accounts/rud-myaccount/${userIndex}/`, data)
+        axios.patch(`${API_PATH}accounts/rud-myaccount/${userIndex}/`, data)
           .then((response) => {
             console.log(response);
             window.location.reload();

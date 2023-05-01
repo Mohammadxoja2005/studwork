@@ -39,7 +39,6 @@ export const REGISTERVERIFY = (phone, code, password) => async dispatch => {
     try {
         await axios.post(API_PATH + '/accounts/verify-register/', { phone, code, password })
             .then((res) => {
-                console.log(res);
                 dispatch(updateAuth({ isVerify: false, isLogin: true }))
                 // nav('/Verify', { replace: true })
             })
@@ -58,7 +57,9 @@ export const LOGIN = (phone, password, nav) => async dispatch => {
         await axios.post(API_PATH + '/accounts/login/', { phone, password })
             .then((res) => {
                 console.log(res);
-                localStorage.setItem(USER_TOKEN, res.data.token)
+                localStorage.setItem(USER_TOKEN, res.data.token);
+                localStorage.setItem('userIndex', res.data.id);
+                
                 nav('/Orders', { replace: true })
             })
             .catch((err) => {

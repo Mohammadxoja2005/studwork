@@ -5,9 +5,10 @@ import axios from "axios";
 const accessToken = localStorage.getItem("accessToken");
 const userIndex = localStorage.getItem("userIndex");
 
-export const getProfile = createAsyncThunk('accounts/getprofile', () => {
 
-  return axios.get(`${API_PATH}accounts/rud-myaccount/${localStorage.getItem("userIndex")}`, {
+export const getProfile = createAsyncThunk('accounts/getprofile', (userId) => {
+
+  return axios.get(`${API_PATH}accounts/rud-myaccount/${userId}`, {
     headers: {
       Authorization: `Token ${accessToken}`
     }
@@ -16,6 +17,7 @@ export const getProfile = createAsyncThunk('accounts/getprofile', () => {
       return response.data;
     })
 })
+
 
 export const profileSlice = createSlice({
   name: "profile",

@@ -11,8 +11,12 @@ const ProfileBody = () => {
 
   const dispatch = useDispatch();
 
+  const userIndex = localStorage.getItem("userIndex");
+
   useEffect(() => {
-    dispatch(getProfile());
+    if (userIndex != null) {
+      dispatch(getProfile(userIndex));
+    }
   }, []);
 
   if (loading) {

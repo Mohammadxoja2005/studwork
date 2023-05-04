@@ -4,11 +4,18 @@ import Footer from '../components/Footer'
 import DirecBody from '../components/DirecBody'
 
 const Directory = () => {
+    const token = localStorage.getItem("accessToken");
     return (
         <>
-            <Navbar />
-            <DirecBody />
-            <Footer />
+            {token ? (
+                <>
+                    <Navbar />
+                    <DirecBody />
+                    <Footer />
+                </>
+            ) : (
+                window.location.href = "#/Registration"
+            )}
         </>
     )
 }

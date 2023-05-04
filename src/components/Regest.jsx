@@ -4,9 +4,11 @@ import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGIN, REGISTER, REGISTERVERIFY } from "../redux/actions/authAction";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Regest = () => {
-  const [activeTab, setActiveTab] = useState("2");
+  const [activeTab, setActiveTab] = useState("1");
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -25,18 +27,37 @@ const Regest = () => {
   const [loginPhone, setLoginPhone] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
+  const errorNotification = () => toast("Пожалуйста заполните все поля");
+  const successNotification = () => toast("Успешна зарегистрировались");
+  const errorPhoneNotification = () => toast("Такой телефон номер уже существует");
+  const errorCodeNotification = () => toast("Код не правильный")
+  const errorPhoneFormatNotification = () => toast("Формат номера телефона должна быть такой: +998 потом номер")
+
   const registration = (e) => {
     e.preventDefault();
-    dispatch(REGISTER(phone, username, password));
+
+    if (password == '' || username == '' || phone == '') {
+      errorNotification();
+      return "";
+    }
+
+    if (/^\+\d{12}$/.test(phone) == false) {
+      errorPhoneFormatNotification();
+      return;
+    }
+
+    dispatch(REGISTER(phone, username, password, errorPhoneNotification))
   };
 
   const verifyRegistration = async (e) => {
     e.preventDefault();
-    dispatch(REGISTERVERIFY(phone, code, password)).then(() => {
+
+    dispatch(REGISTERVERIFY(phone, code, password, successNotification, errorCodeNotification)).then(() => {
       setUsername("");
       setPassword("");
       setPhone("");
     });
+
   };
 
   const login = (e) => {
@@ -46,6 +67,7 @@ const Regest = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="Regest">
         <div className="container">
           <div className="row">
@@ -86,7 +108,7 @@ const Regest = () => {
                         required
                         className="regestr_inp form-control"
                         placeholder="Телефон"
-                        type="text"
+                        type="tel"
                         name=""
                         id=""
                       />
@@ -132,7 +154,7 @@ const Regest = () => {
                         required
                         className="regestr_inp form-control"
                         placeholder="Телефон"
-                        type="text"
+                        type="tel"
                         name=""
                         id=""
                       />
@@ -146,8 +168,8 @@ const Regest = () => {
                         name=""
                         id=""
                       />
-                      <div className="regestr_tab_h2">Вы </div>
-                      <div className="regestr_radio_check">
+                      {/* <div className="regestr_tab_h2">Вы </div> */}
+                      {/* <div className="regestr_radio_check">
                         <div className="regestr_radio_box">
                           <input
                             className="regestr_radio"
@@ -164,7 +186,7 @@ const Regest = () => {
                           />
                           Автор{" "}
                         </div>
-                      </div>
+                      </div> */}
                       {verification && (
                         <input
                           value={code}

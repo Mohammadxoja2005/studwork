@@ -4,11 +4,18 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 
 const FAQ = () => {
+    const token = localStorage.getItem("accessToken");
     return (
         <>
-            <Navbar />
-            <FaqBody />
-            <Footer />
+            {token ? (
+                <>
+                    <Navbar />
+                    <FaqBody />
+                    <Footer />
+                </>
+            ) : (
+                window.location.href = "#/Registration"
+            )}
         </>
     )
 }

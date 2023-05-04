@@ -4,11 +4,20 @@ import Navbar from '../components/Navbar'
 import ShopBody from '../components/ShopBody'
 
 const Shop = () => {
+    const token = localStorage.getItem("accessToken");
+
     return (
         <>
-            <Navbar />
-            <ShopBody />
-            <Footer />
+            {token ? (
+                <>
+                    <Navbar />
+                    <ShopBody />
+                    <Footer />
+                </>
+            ) : (
+                window.location.href = "#/Registration"
+                // navigate('/Registration')
+            )}
         </>
     )
 }

@@ -18,31 +18,35 @@ export const test = () => async (dispatch) => {
     }
 }
 
-export const REGISTER = (phone, username, password) => async dispatch => {
+export const REGISTER = (phone, username, password, errorPhoneNotification) => async dispatch => {
 
-    try {
-        await axios.post(API_PATH + '/accounts/register/', { phone, username, password })
-            .then((res) => {
-                console.log(res);
-                dispatch(updateAuth({ isVerify: true }))
-                // nav('/Verify', { replace: true })
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    } catch (err) {
-        console.log(err);
-    }
+    // try {
+    return axios.post(API_PATH + 'accounts/register/', { phone, username, password })
+        .then((res) => {
+            // console.log(res);
+            dispatch(updateAuth({ isVerify: true }))
+            // nav('/Verify', { replace: true })
+        })
+        .catch((err) => { 
+            errorPhoneNotification()
+            console.log(err); 
+            
+        })
+    // } catch (err) {
+    //     console.log(err);
+    // }
 }
 
-export const REGISTERVERIFY = (phone, code, password) => async dispatch => {
+export const REGISTERVERIFY = (phone, code, password, successNotification, errorCodeNotification) => async dispatch => {
     try {
-        await axios.post(API_PATH + '/accounts/verify-register/', { phone, code, password })
+        await axios.post(API_PATH + 'accounts/verify-register/', { phone, code, password })
             .then((res) => {
                 dispatch(updateAuth({ isVerify: false, isLogin: true }))
-                // nav('/Verify', { replace: true })
+                // nav('/Verify', { replace: true }) 
+                successNotification();
             })
             .catch((err) => {
+                errorCodeNotification();
                 console.log(err);
             })
     } catch (err) {
@@ -54,12 +58,11 @@ export const REGISTERVERIFY = (phone, code, password) => async dispatch => {
 
 export const LOGIN = (phone, password, nav) => async dispatch => {
     try {
-        await axios.post(API_PATH + '/accounts/login/', { phone, password })
+        await axios.post(API_PATH + 'accounts/login/', { phone, password })
             .then((res) => {
                 console.log(res);
                 localStorage.setItem(USER_TOKEN, res.data.token);
                 localStorage.setItem('userIndex', res.data.id);
-                
                 nav('/Orders', { replace: true })
             })
             .catch((err) => {

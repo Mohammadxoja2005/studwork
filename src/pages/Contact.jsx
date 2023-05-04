@@ -4,11 +4,19 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 
 const Contact = () => {
+    const token = localStorage.getItem("accessToken");
     return (
         <>
-            <Navbar />
-            <ContactBody />
-            <Footer />
+            {token ? (
+                <>
+                    <Navbar />
+                    <ContactBody />
+                    <Footer />
+                </>
+            ) : (
+                window.location.href = "#/Registration"
+                // navigate('/Registration')
+            )}
         </>
     )
 }

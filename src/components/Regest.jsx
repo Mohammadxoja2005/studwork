@@ -28,6 +28,7 @@ const Regest = () => {
   const [loginPassword, setLoginPassword] = useState("");
 
   const errorNotification = () => toast("Пожалуйста заполните все поля");
+  const errorPasswordNotification = () => toast("Код должен быть не 8 симболов и больше");
   const successNotification = () => toast("Успешна зарегистрировались");
   const errorPhoneNotification = () => toast("Такой телефон номер уже существует");
   const errorCodeNotification = () => toast("Код не правильный");
@@ -41,6 +42,11 @@ const Regest = () => {
 
     if (password == '' || username == '' || phone == '') {
       errorNotification();
+      return "";
+    }
+
+    if (password.length < 8) {
+      errorPasswordNotification();
       return "";
     }
 
@@ -77,6 +83,11 @@ const Regest = () => {
     if (/^\+\d{12}$/.test(loginPhone) == false) {
       errorPhoneFormatNotification();
       return;
+    }
+
+    if (loginPassword.length < 8) {
+      errorPasswordNotification();
+      return "";
     }
 
     dispatch(LOGIN(loginPhone, loginPassword, nav, successLoginNotification, unSuccessLoginNotification));

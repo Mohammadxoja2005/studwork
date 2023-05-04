@@ -30,8 +30,10 @@ const Regest = () => {
   const errorNotification = () => toast("Пожалуйста заполните все поля");
   const successNotification = () => toast("Успешна зарегистрировались");
   const errorPhoneNotification = () => toast("Такой телефон номер уже существует");
-  const errorCodeNotification = () => toast("Код не правильный")
-  const errorPhoneFormatNotification = () => toast("Формат номера телефона должна быть такой: +998 потом номер")
+  const errorCodeNotification = () => toast("Код не правильный");
+  const errorPhoneFormatNotification = () => toast("Формат номера телефона должна быть такой: +998 потом номер");
+  const successLoginNotification = () => toast("Успешная авторизация");
+  const unSuccessLoginNotification = () => toast("Пожалуйста проверте данные, логин или пароль не правильный");
 
   const registration = (e) => {
     e.preventDefault();
@@ -62,7 +64,18 @@ const Regest = () => {
 
   const login = (e) => {
     e.preventDefault();
-    dispatch(LOGIN(loginPhone, loginPassword, nav));
+
+    if (loginPassword == '' || loginPhone == '') {
+      errorNotification();
+      return "";
+    }
+
+    if (/^\+\d{12}$/.test(loginPhone) == false) {
+      errorPhoneFormatNotification();
+      return;
+    }
+
+    dispatch(LOGIN(loginPhone, loginPassword, nav, successLoginNotification, unSuccessLoginNotification));
   };
 
   return (
@@ -105,7 +118,6 @@ const Regest = () => {
                       <input
                         onChange={(e) => setLoginPhone(e.target.value)}
                         value={loginPhone}
-                        required
                         className="regestr_inp form-control"
                         placeholder="Телефон"
                         type="tel"

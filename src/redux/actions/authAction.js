@@ -27,10 +27,10 @@ export const REGISTER = (phone, username, password, errorPhoneNotification) => a
             dispatch(updateAuth({ isVerify: true }))
             // nav('/Verify', { replace: true })
         })
-        .catch((err) => { 
+        .catch((err) => {
             errorPhoneNotification()
-            console.log(err); 
-            
+            console.log(err);
+
         })
     // } catch (err) {
     //     console.log(err);
@@ -56,16 +56,18 @@ export const REGISTERVERIFY = (phone, code, password, successNotification, error
 
 
 
-export const LOGIN = (phone, password, nav) => async dispatch => {
+export const LOGIN = (phone, password, nav, successLoginNotification, unSuccessLoginNotification) => async dispatch => {
     try {
         await axios.post(API_PATH + 'accounts/login/', { phone, password })
             .then((res) => {
                 console.log(res);
                 localStorage.setItem(USER_TOKEN, res.data.token);
-                localStorage.setItem('userIndex', res.data.id);
+                localStorage.setItem('userIndex', res.data.id); 
+                successLoginNotification()
                 nav('/Orders', { replace: true })
             })
-            .catch((err) => {
+            .catch((err) => { 
+                unSuccessLoginNotification()
                 console.log(err);
             })
     } catch (err) {

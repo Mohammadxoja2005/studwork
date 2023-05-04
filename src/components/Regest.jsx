@@ -31,6 +31,7 @@ const Regest = () => {
   const successNotification = () => toast("Успешна зарегистрировались");
   const errorPhoneNotification = () => toast("Такой телефон номер уже существует");
   const errorCodeNotification = () => toast("Код не правильный");
+  const phoneCodeNotificaiton = () => toast("Вам был отправлен код на ваш телефон, пожалуйста введите ее")
   const errorPhoneFormatNotification = () => toast("Формат номера телефона должна быть такой: +998 потом номер");
   const successLoginNotification = () => toast("Успешная авторизация");
   const unSuccessLoginNotification = () => toast("Пожалуйста проверте данные, логин или пароль не правильный");
@@ -49,6 +50,9 @@ const Regest = () => {
     }
 
     dispatch(REGISTER(phone, username, password, errorPhoneNotification))
+      .then(() => {
+        phoneCodeNotificaiton();
+      })
   };
 
   const verifyRegistration = async (e) => {

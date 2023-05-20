@@ -14,7 +14,7 @@ export const getWorkTypes = createAsyncThunk('/projects/list-worktype/', () => {
 });
 
 export const getSubjectTypes = createAsyncThunk('/projects/list-subjecttype/', () => {
-    return axios.get(`${API_PATH}/projects/list-subjecttype/`)
+    return axios.get(`${API_PATH}accounts/list-subject/`)
         .then((response) => {
             return response.data;
         })
@@ -22,7 +22,7 @@ export const getSubjectTypes = createAsyncThunk('/projects/list-subjecttype/', (
 });
 
 export const getProjects = createAsyncThunk('/projects/work-list/', () => {
-    return axios.get(`${API_PATH}/projects/work-list/`)
+    return axios.get(`${API_PATH}projects/work-list/`)
         .then((response) => {
             return response.data;
         })

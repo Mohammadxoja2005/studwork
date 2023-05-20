@@ -9,12 +9,14 @@ const OrderInBody = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const market = useSelector((state) => state.market.singleMarket);
-  const isLoading = useSelector((state) => state.market.loading);
-
   useEffect(() => {
     dispatch(getMarket(id));
   }, []);
+
+  const market = useSelector((state) => state.market.singleMarket);
+  const isLoading = useSelector((state) => state.market.loading);
+
+  console.log(market);
 
   return (
     <>

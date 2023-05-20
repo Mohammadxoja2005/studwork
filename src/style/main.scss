@@ -10,7 +10,7 @@ $text: #778ca3;
 
 #root {
   overflow-x: hidden;
-}
+} 
 
 .header1 {
   width: 100%;
@@ -41,6 +41,10 @@ $text: #778ca3;
   text-transform: capitalize;
   text-decoration: none;
   cursor: pointer;
+} 
+
+.header1_logo img {
+  width: 150px;
 }
 
 .header1_menu {
@@ -128,6 +132,15 @@ $text: #778ca3;
   cursor: pointer;
 }
 
+.showorder_des {
+}
+
+.showorder_des_title {
+  font-size: 21px;
+  // color: #fff;
+  margin-bottom: 20px;
+}
+
 .profile_input {
   margin-bottom: 20px;
 }
@@ -205,10 +218,11 @@ $text: #778ca3;
   gap: 28px;
 }
 
-.showorder_detail_first {
-  display: flex;
-  flex-direction: column;
-}
+// .showorder_detail_first {
+//   display: flex;
+//   flex-direction: column;
+//   width: 450px;
+// }
 
 .showorder_detail_info {
   // display: flex;
@@ -5905,7 +5919,14 @@ body {
 //   .nav_a {
 //     font-size: 5px;
 //   }
-// }
+// } 
+
+@media screen and (max-width: 991px) {
+  .showorder_details {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 @media screen and (max-width: 500px) {
   .last_ord_sale {

@@ -8,14 +8,16 @@ function ShowOrder() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const order = useSelector((state) => state.project.singleProject);
-  console.log(order);
-
   useEffect(() => {
     dispatch(getProject(id));
   }, []);
 
-  const onSubmit = () => {
+  const order = useSelector((state) => state.project.singleProject);
+  
+  console.log(order); 
+
+  const onSubmit = (e) => {
+    e.preventDefault();
     dispatch(
       projectResponse({ work: order.id, user: localStorage.getItem("userIndex") })
     );
@@ -54,7 +56,7 @@ function ShowOrder() {
             <div className="showorder_profile_info">
               <div className="showorder_profile_img"></div>
 
-              <p className="showorder_profile_username">maxx1011</p>
+              <p className="showorder_profile_username">{order.user}</p>
             </div>
 
             <div className="showorder_profile_features">
@@ -390,15 +392,39 @@ function ShowOrder() {
             </div>
           </div>
 
+          <div className="showorder_des" >
+            <h2 className="showorder_des_title">Описание работы</h2>
+            <p>{order.description}</p>
+
+          </div>
+
+
           <div className="showorder_alert">
             <h3 className="showorder_alert_title">Моё предложение</h3>
 
             <div className="showorder_alert_form">
-              <div className="showorder_alert_name">
+              {/* <div className="showorder_alert_name">
                 Вы пока не сделали предложения
-              </div>
+              </div> */}
               {/* <div className="showorder_alert_warn"></div> */}
-              <div className="showorder_alert_input_container">
+
+              <form>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control mb-4"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Комментарии к заказу без ставки (Не обезятельное поле)"
+                  />
+                </div>
+                <button onClick={onSubmit} type="submit" className="btn btn-primary">
+                  Отправить
+                </button>
+              </form>
+
+
+              {/* <div className="showorder_alert_input_container">
                 <input
                   type="text"
                   placeholder="type something"
@@ -410,9 +436,9 @@ function ShowOrder() {
                 <div className="showorder_alert_btn" onClick={onSubmit}>
                   отправить
                 </div>
-                {/* <div className="showorder_alert_price"></div> */}
                 <input type="text" className="showorder_alert_input" />
-              </div>
+              </div> */}
+
             </div>
           </div>
         </div>

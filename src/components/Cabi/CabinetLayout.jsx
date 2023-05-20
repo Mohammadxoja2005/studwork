@@ -7,7 +7,7 @@ const CabinetLayout = (props) => {
 
     return (
         <>
-            < div className='CabinetLayout' >
+            < div className='CabinetLayout'>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-3 ">

@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+// images
+import LOGO from "../assets/images/logo.png";
 
 const Navbar = () => {
   const location = useLocation();
   const [navbar, setNavbar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const isLogin = localStorage.getItem("accessToken")
-
-  // const changeNavbar = () => {
-  //   if (window.scrollY >= 50) {
-  //     setNavbar(true);
-  //   } else {
-  //     setNavbar(false);
-  //   }
-  // };
-
-  // window.addEventListener("scroll", changeNavbar);
 
   const exitFromLogin = () => {
     localStorage.removeItem("accessToken");
@@ -160,7 +152,9 @@ const Navbar = () => {
         <div className="header1_container">
 
           <div className="header1_logo_container">
-            <a href="#/" className="header1_logo">logo</a>
+            <a href="#/" className="header1_logo">
+              <img src={LOGO} alt="" />
+            </a>
           </div>
 
           <div className="header1_menu">
@@ -198,7 +192,9 @@ const Navbar = () => {
 
       <div className="navbar_mobile">
         <div className="header1_logo_container">
-          <a href="#" className="header1_logo">logo</a>
+          <a href="#" className="header1_logo">
+            <img src={LOGO} alt="" />
+          </a>
         </div>
         <nav class="navbar navbar-dark" onClick={() => setIsOpen(!isOpen)}>
           <button
